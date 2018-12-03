@@ -12,6 +12,10 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>/login</url-pattern>
+		<url-pattern>/index</url-pattern>
 	</servlet-mapping>
+	<!-- Cargar JSP como página principal -->
+	<welcome-file-list>
+		<welcome-file>index</welcome-file>
+	</welcome-file-list>
 </web-app>
