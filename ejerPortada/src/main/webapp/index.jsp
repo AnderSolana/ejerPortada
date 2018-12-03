@@ -1,12 +1,14 @@
 <%@page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.ipartek.formacion.ejerportada.pojos.Noticia" %>
-<%
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored = "false" %>
+<%-- <%
 	
 	Object oNoticias = request.getAttribute("noticias");
 	ArrayList <Noticia> noticias = (ArrayList<Noticia>)oNoticias;
 	
-%>
+%> --%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -116,25 +118,29 @@
 <div id="divisionSecciones">    
 <section>
      <h2 class="noticias">Últimas noticias</h2>
-    <% for(Noticia n: noticias) { %>
+   <%--  <% for(Noticia n: noticias) { %> --%>
+   <c:forEach items="${proyectos}" var="proyecto">
     <article>
         <header>
-            <h3><%= n.getTitulo() %></h3>
+            <h3>
+            <%-- <%= n.getTitulo() %> --%>
+            ${proyecto.titulo}
+            </h3>
         </header>
        
         <footer>
-             Publicado el <time datetime="2017-01-23"><%= n.getFecha() %></time> por <a href="#"> <%= n.getAutor() %></a> 
+             Publicado el <time datetime="2017-01-23"> ${proyecto.fecha}</time> por <a href="#">  ${proyecto.autor}</a> 
         </footer>
     <div class="noticia">
-       <p><img src="<%= n.getImagen() %>" alt="" class="borderedImg"></p>
+       <p><img src=" ${proyecto.imagen}" alt="" class="borderedImg"></p>
         
-        <p class="textoNoticia"><%= n.getTexto() %></p>
+        <p class="textoNoticia"> ${proyecto.texto}</p>
     </div>
         <p><a href="#" class="more">leer más</a></p>
       
     </article>
-    
-   <% } %>
+    </c:forEach>
+  <%--  <% } %> --%>
 </section>    
     
 	
