@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.ipartek.formacion.ejerportada.pojos.Noticia" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page isELIgnored = "false" %>
+
 <%-- <%
 	
 	Object oNoticias = request.getAttribute("noticias");
@@ -118,23 +118,21 @@
 <div id="divisionSecciones">    
 <section>
      <h2 class="noticias">Últimas noticias</h2>
-   <%--  <% for(Noticia n: noticias) { %> --%>
-   <c:forEach items="${proyectos}" var="proyecto">
+   
+   <c:forEach items="${noticias}" var="noticia">
     <article>
         <header>
-            <h3>
-            <%-- <%= n.getTitulo() %> --%>
-            ${proyecto.titulo}
+            <h3>${noticia.titulo}
             </h3>
         </header>
        
         <footer>
-             Publicado el <time datetime="2017-01-23"> ${proyecto.fecha}</time> por <a href="#">  ${proyecto.autor}</a> 
+             Publicado el <time datetime="2017-01-23"> ${noticia.fecha}</time> por <a href="#">  ${noticia.autor}</a> 
         </footer>
     <div class="noticia">
-       <p><img src=" ${proyecto.imagen}" alt="" class="borderedImg"></p>
+       <p><img src=" ${noticia.imagen}" alt="" class="borderedImg"></p>
         
-        <p class="textoNoticia"> ${proyecto.texto}</p>
+        <p class="textoNoticia"> ${noticia.texto}</p>
     </div>
         <p><a href="#" class="more">leer más</a></p>
       
