@@ -138,6 +138,7 @@
       
     </article>
     </c:forEach>
+    <h2><a href="nuevanoticia">Nueva Noticia</a></h2>
   <%--  <% } %> --%>
 </section>    
     

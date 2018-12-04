@@ -14,7 +14,7 @@ import com.ipartek.formacion.ejerportada.pojos.Noticia;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/principal")
+@WebServlet("/index")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -22,16 +22,24 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			ArrayList<Noticia> noticias = new ArrayList<Noticia>();
+			@SuppressWarnings("unchecked")
+			ArrayList<Noticia> noticias = (ArrayList<Noticia>) request.getServletContext().getAttribute("noticias");
 			
-			noticias.add(new Noticia(1L, "Noticia 1", "23.01.17", "Jane Doe", "media/noticia-1.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
-			noticias.add(new Noticia(2L, "Noticia 2", "22.01.17", "John Doe", "media/noticia-2.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
-			noticias.add(new Noticia(2L, "Noticia 3", "21.01.17", "Jane Doe", "media/noticia-3.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+			if (noticias == null) {
+				noticias = new ArrayList<Noticia>();
+				noticias.add(new Noticia(1L, "Noticia 1", "23.01.17", "Jane Doe", "media/noticia-1.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				noticias.add(new Noticia(2L, "Noticia 2", "22.01.17", "John Doe", "media/noticia-2.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				noticias.add(new Noticia(2L, "Noticia 3", "21.01.17", "Jane Doe", "media/noticia-3.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				
+				request.getServletContext().setAttribute("noticias", noticias);
+			}
 			
-			request.setAttribute("noticias", noticias);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			
+			//request.setAttribute("noticias", noticias);
 			
 			// Ir a la página indicada y llevarse todos los datos
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			//request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 		
 	}
