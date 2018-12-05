@@ -124,8 +124,11 @@
    <c:forEach items="${noticias.values()}" var="noticia">
     <article>
         <header>
-            <h3>${noticia.titulo}
-            </h3>
+            <%-- <h3>${noticia.titulo}
+            </h3> --%>
+            
+             <h3>${noticia.titulo} <a href="editarNoticia?id=${noticia.id}">Editar</a></h3>
+            
         </header>
        
         <footer>
