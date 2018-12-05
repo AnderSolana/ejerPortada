@@ -119,7 +119,9 @@
 <section>
      <h2 class="noticias">Últimas noticias</h2>
    
-   <c:forEach items="${noticias}" var="noticia">
+   <%-- <c:forEach items="${noticias}" var="noticia"> --%>
+   
+   <c:forEach items="${noticias.values()}" var="noticia">
     <article>
         <header>
             <h3>${noticia.titulo}

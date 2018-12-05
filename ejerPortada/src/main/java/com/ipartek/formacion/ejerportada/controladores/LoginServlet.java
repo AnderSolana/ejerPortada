@@ -2,6 +2,7 @@ package com.ipartek.formacion.ejerportada.controladores;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,14 +23,18 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			//@SuppressWarnings("unchecked")
+			//ArrayList<Noticia> noticias = (ArrayList<Noticia>) request.getServletContext().getAttribute("noticias");
 			@SuppressWarnings("unchecked")
-			ArrayList<Noticia> noticias = (ArrayList<Noticia>) request.getServletContext().getAttribute("noticias");
+			HashMap<Long, Noticia> noticias = 
+			(HashMap<Long, Noticia>) request.getServletContext().getAttribute("noticias");
 			
 			if (noticias == null) {
-				noticias = new ArrayList<Noticia>();
-				noticias.add(new Noticia(1L, "Noticia 1", "23.01.17", "Jane Doe", "media/noticia-1.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
-				noticias.add(new Noticia(2L, "Noticia 2", "22.01.17", "John Doe", "media/noticia-2.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
-				noticias.add(new Noticia(2L, "Noticia 3", "21.01.17", "Jane Doe", "media/noticia-3.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				//noticias = new ArrayList<Noticia>();
+				noticias = new HashMap<Long, Noticia>();
+				noticias.put(1L, new Noticia(1L, "Noticia 1", "23.01.17", "Jane Doe", "media/noticia-1.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				noticias.put(2L, new Noticia(2L, "Noticia 2", "22.01.17", "John Doe", "media/noticia-2.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				noticias.put(3L, new Noticia(2L, "Noticia 3", "21.01.17", "Jane Doe", "media/noticia-3.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
 				
 				request.getServletContext().setAttribute("noticias", noticias);
 			}

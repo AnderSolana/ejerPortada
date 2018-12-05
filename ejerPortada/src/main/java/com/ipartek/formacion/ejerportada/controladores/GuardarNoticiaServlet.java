@@ -2,6 +2,7 @@ package com.ipartek.formacion.ejerportada.controladores;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,13 +30,17 @@ public class GuardarNoticiaServlet extends HttpServlet {
 		String imagen = "media/noticia-1.jpg";
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Noticia> noticias = (ArrayList<Noticia>) request.getServletContext().getAttribute("noticias");
+		//ArrayList<Noticia> noticias = (ArrayList<Noticia>) request.getServletContext().getAttribute("noticias");
+		HashMap<Long, Noticia> noticias = 
+		(HashMap<Long, Noticia>) request.getServletContext().getAttribute("noticias");
 		
 		// Empaquetarla en un objeto
+		//Noticia noticia = new Noticia(Long.parseLong(id), titulo, fecha, autor, imagen, texto);
 		Noticia noticia = new Noticia(Long.parseLong(id), titulo, fecha, autor, imagen, texto);
 		
 		//Realizar la operación
-		noticias.add(noticia);
+		//noticias.add(noticia);
+		noticias.put(Long.parseLong(id), noticia);
 		
 		//Redireccionar a la página correspondiente
 		request.getRequestDispatcher("/").forward(request, response);
