@@ -127,7 +127,8 @@
             <%-- <h3>${noticia.titulo}
             </h3> --%>
             
-             <h3>${noticia.titulo} <a href="editarNoticia?id=${noticia.id}">Editar</a></h3>
+             <h3>${noticia.titulo} <a href="editarnoticia?id=${noticia.id}">Editar</a>
+             <a href="borrarnoticia?id=${noticia.id}">Borrar</a></h3>
             
         </header>
        
