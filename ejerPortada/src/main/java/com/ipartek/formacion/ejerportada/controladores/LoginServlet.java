@@ -32,9 +32,9 @@ public class LoginServlet extends HttpServlet {
 			if (noticias == null) {
 				//noticias = new ArrayList<Noticia>();
 				noticias = new HashMap<Long, Noticia>();
-				noticias.put(1L, new Noticia(1L, "Noticia 1", "23.01.17", "Jane Doe", "media/noticia-1.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
-				noticias.put(2L, new Noticia(2L, "Noticia 2", "22.01.17", "John Doe", "media/noticia-2.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
-				noticias.put(3L, new Noticia(2L, "Noticia 3", "21.01.17", "Jane Doe", "media/noticia-3.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				noticias.put(1L, new Noticia(1L, "Noticia 1", "2017-01-23", "Jane Doe", "media/noticia-1.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				noticias.put(2L, new Noticia(2L, "Noticia 2", "2017-01-22", "John Doe", "media/noticia-2.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
+				noticias.put(3L, new Noticia(2L, "Noticia 3", "2017-01-21", "Jane Doe", "media/noticia-3.jpg", "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo."));
 				
 				request.getServletContext().setAttribute("noticias", noticias);
 			}
