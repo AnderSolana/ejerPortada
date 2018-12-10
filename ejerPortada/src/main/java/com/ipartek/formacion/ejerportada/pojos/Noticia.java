@@ -29,6 +29,7 @@ public class Noticia {
 		this.titulo = titulo;
 		this.fecha2 = fecha;
 		this.autor = autor;
+		this.imagen = imagen;
 		this.texto = texto;
 	}
 
