@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="includes/cabecera.jsp"%>
 
-<h1>NOTICIAS</h1>
-
 <section>
 	<h2 class="noticias">Últimas noticias</h2>
 
@@ -38,7 +36,7 @@
 	</c:forEach>
 
 	<p>
-		<a href="formularionoticia?accion=anadir">Añadir</a>
+		<a href="formularionoticia?accion=insertar">Añadir</a>
 	</p>
 
 </section>
