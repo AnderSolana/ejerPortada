@@ -1,8 +1,11 @@
 package com.ipartek.formacion.ejerportada.pojos;
 
+import java.util.Date;
+
 public class Noticia {
 	private Long id; 
-	private String titulo, fecha, autor, imagen, texto; 
+	private String titulo, fecha,  autor, imagen, texto;
+	Date fecha2; 
 	
 	public Noticia(Long id, String titulo, String fecha, String autor, String imagen, String texto) {
 		setId(id);
@@ -18,6 +21,17 @@ public class Noticia {
 	public Noticia() {
 		
 	}
+
+
+	public Noticia(Long id, String titulo, Date fecha, String autor, String imagen, String texto) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.fecha2 = fecha;
+		this.autor = autor;
+		this.texto = texto;
+	}
+
 
 
 	public Long getId() {
@@ -52,6 +66,18 @@ public class Noticia {
 
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+
+
+
+	public Date getFecha2() {
+		return fecha2;
+	}
+
+
+
+	public void setFecha2(Date fecha2) {
+		this.fecha2 = fecha2;
 	}
 
 
