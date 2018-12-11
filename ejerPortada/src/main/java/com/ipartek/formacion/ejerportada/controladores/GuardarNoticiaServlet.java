@@ -2,7 +2,7 @@ package com.ipartek.formacion.ejerportada.controladores;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,8 +31,8 @@ public class GuardarNoticiaServlet extends HttpServlet {
 		
 		@SuppressWarnings("unchecked")
 		//ArrayList<Noticia> noticias = (ArrayList<Noticia>) request.getServletContext().getAttribute("noticias");
-		HashMap<Long, Noticia> noticias = 
-		(HashMap<Long, Noticia>) request.getServletContext().getAttribute("noticias");
+		TreeMap<Long, Noticia> noticias = 
+		(TreeMap<Long, Noticia>) request.getServletContext().getAttribute("noticias");
 		
 		// Empaquetarla en un objeto
 		//Noticia noticia = new Noticia(Long.parseLong(id), titulo, fecha, autor, imagen, texto);

@@ -1,7 +1,7 @@
 package com.ipartek.formacion.ejerportada.controladores;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +22,8 @@ public class EditarNoticiaServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		
 		@SuppressWarnings("unchecked")
-		HashMap<Long, Noticia> noticias = 
-				(HashMap<Long, Noticia>) request.getServletContext().getAttribute("noticias");
+		TreeMap<Long, Noticia> noticias = 
+				(TreeMap<Long, Noticia>) request.getServletContext().getAttribute("noticias");
 		
 		Noticia noticia = noticias.get(Long.parseLong(id));
 		
