@@ -15,6 +15,7 @@ import com.ipartek.formacion.ejerportada.pojos.Noticia;
 
 @WebServlet("/formularionoticia")
 public class FormularioNoticiaServlet extends HttpServlet {
+	private static final String NOTICIA_JSP = "noticia.jsp";
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +40,7 @@ public class FormularioNoticiaServlet extends HttpServlet {
 		
 			request.setAttribute("accion", accion);
 		
-		request.getRequestDispatcher("noticia.jsp").forward(request, response);
+		request.getRequestDispatcher(NOTICIA_JSP).forward(request, response);
 	}
 
 	
@@ -81,6 +82,12 @@ public class FormularioNoticiaServlet extends HttpServlet {
 		case "insertar": 
 		case "editar": 
 			Noticia noticia = new Noticia(idLong, titular, fechaDate, autor, null, texto);
+			
+			if (noticia.isCorrecto()) {
+				request.setAttribute("noticia", noticia);
+				request.getRequestDispatcher(NOTICIA_JSP);
+			}
+			
 			noticias.put(noticia.getId(), noticia);
 			break;
 		case "borrar": noticias.remove(Long.parseLong(id)); break;

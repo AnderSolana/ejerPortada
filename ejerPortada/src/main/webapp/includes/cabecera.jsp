@@ -15,6 +15,10 @@
 	<meta name="generator" content="Notepad++">
 	<link rel="stylesheet" href="css/estilos.css">
 	<title>Práctica Estructura y CSS</title>
+	
+	<style>
+	.error {color:red;}
+	</style>
 </head>
 
 	
