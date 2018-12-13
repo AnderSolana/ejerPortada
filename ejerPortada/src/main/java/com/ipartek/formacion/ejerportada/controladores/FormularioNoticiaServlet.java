@@ -20,31 +20,32 @@ public class FormularioNoticiaServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String accion = request.getParameter("accion");
-		String id = request.getParameter("id");
+ 		String id = request.getParameter("id");
+ 		
+ 		if(accion != null && !"insertar".equals(accion)) {
+ 			@SuppressWarnings("unchecked")
+ 			TreeMap<Long, Noticia> noticias = 
+ 					(TreeMap<Long, Noticia>) request.getServletContext().getAttribute("noticias");
+ 			
+ 			if(noticias == null) {
+ 				response.sendRedirect("noticias");
+ 				return;
+ 			}
+ 			
+ 			Noticia noticia = noticias.get(Long.parseLong(id));
+ 			
+ 			request.setAttribute("noticia", noticia);
+ 		}
 		
-		
-		if(accion != null && !"insertar".equals(accion)) {
-			@SuppressWarnings("unchecked")
-			TreeMap<Long, Noticia> noticias = 
-					(TreeMap<Long, Noticia>) request.getServletContext().getAttribute("noticias");
-			
-			if(noticias == null) {
-				response.sendRedirect("noticias");
-				return;
-			}
-			
-			Noticia noticia = noticias.get(Long.parseLong(id));
-			
-			request.setAttribute("noticia", noticia);
-		}
-		
-			request.setAttribute("accion", accion);
+		request.setAttribute("accion", accion);
 		
 		request.getRequestDispatcher(NOTICIA_JSP).forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
 		String accion = request.getParameter("accion");
 		String id = request.getParameter("id");
 		
@@ -83,9 +84,11 @@ public class FormularioNoticiaServlet extends HttpServlet {
 		case "editar": 
 			Noticia noticia = new Noticia(idLong, titular, fechaDate, autor, null, texto);
 			
-			if (noticia.isCorrecto()) {
+			if(!noticia.isCorrecto()) {
+				request.setAttribute("accion", accion);
 				request.setAttribute("noticia", noticia);
-				request.getRequestDispatcher(NOTICIA_JSP);
+				request.getRequestDispatcher(NOTICIA_JSP).forward(request, response);
+				return;
 			}
 			
 			noticias.put(noticia.getId(), noticia);

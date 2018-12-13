@@ -112,7 +112,7 @@ public class Noticia {
 
 	public void setTexto(String texto) {
 		//Expresión regular original \w+\.\w+.\w+
-		if (texto.matches("\\w+\\.\\w+.\\w+")) {
+		if(!texto.matches("[0-9A-Za-zÑñÁáÉéÍíÓóÚúÜü,\\.\\n\\s]{50,}")) {
 			setErrorTexto("No se cumplen los requisitos del texto");
 		}
 		this.texto = texto;
